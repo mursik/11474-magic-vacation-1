@@ -1,3 +1,14 @@
+.screen--intro {
+  &.active {
+    .intro__message {
+      -webkit-animation: fadeInTop 1s;
+         -moz-animation: fadeInTop 1s;
+           -o-animation: fadeInTop 1s;
+              animation: fadeInTop 1s;
+    }
+  }
+}
+
 .intro {
   display: flex;
   flex-direction: column;
