@@ -255,7 +255,8 @@
       height: 2px;
       background-color: $c-light;
       display: block;
-      left: 0;
+      right: 0;
+      left: auto;
       -webkit-transition: width 0.4s;
          -moz-transition: width 0.4s;
           -ms-transition: width 0.4s;
@@ -299,6 +300,8 @@
         opacity: 1;
         background-color: $c-purple;
         width: 100%;
+        right: auto;
+        left: 0;
       }
     }
   }
