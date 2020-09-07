@@ -334,6 +334,22 @@
       opacity: 0;
     }
   }
+  &.active {
+    #message-field {
+      -webkit-animation: 1s fadeInRightLeft;
+         -moz-animation: 1s fadeInRightLeft;
+           -o-animation: 1s fadeInRightLeft;
+              animation: 1s fadeInRightLeft;
+    }
+    #message-form {
+      .form__button{
+        -webkit-animation: 0.8s zoomIn;
+           -moz-animation: 0.8s zoomIn;
+             -o-animation: 0.8s zoomIn;
+                animation: 0.8s zoomIn;
+      }
+    }
+  }
 }
 
 .screen--result {
