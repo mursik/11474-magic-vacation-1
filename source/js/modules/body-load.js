@@ -1,6 +1,6 @@
 export default () => {
-  let body = document.body;
-  window.addEventListener(`load`, function () {
+  const {body} = document;
+  window.addEventListener(`load`, () => {
     body.classList.add(`loaded`);
   });
 };
