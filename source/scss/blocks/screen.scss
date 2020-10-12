@@ -300,10 +300,6 @@
   }
 }
 
-.screen--prizes {
-  background-color: $c-dark;
-}
-
 .screen--game {
   position: relative;
   background-color: $c-dark;
@@ -368,4 +364,21 @@
 
 .screen--rules {
   background-color: $c-dark;
+}
+
+.screen__bg {
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: $c-dark;
+  &.active {
+    height: 100%;
+    -webkit-animation: heightTop 0.7s;
+       -moz-animation: heightTop 0.7s;
+         -o-animation: heightTop 0.7s;
+            animation: heightTop 0.7s;
+  }
 }

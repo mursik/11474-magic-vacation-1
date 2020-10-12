@@ -16,6 +16,14 @@
             transform: translateY(0);
   }
 }
+@keyframes heightTop {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
 @keyframes fadeInRightLeft {
   from {
     opacity: 0;
