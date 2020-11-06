@@ -1,5 +1,4 @@
 // modules
-import rules from './modules/rules.js';
 import mobileHeight from './modules/mobile-height-adjust.js';
 import slider from './modules/slider.js';
 import menu from './modules/menu.js';
@@ -12,7 +11,6 @@ import FullPageScroll from './modules/full-page-scroll';
 import bodyLoad from './modules/body-load';
 
 // init modules
-rules();
 mobileHeight();
 slider();
 menu();

@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import rules from './rules.js';
 
 export default class FullPageScroll {
   constructor() {
@@ -55,6 +56,7 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     this.screenElements[this.activeScreen].classList.add(`active`);
     this.screenBg.classList.remove(`active`);
+    rules();
   }
 
   changeActiveMenuItem() {
