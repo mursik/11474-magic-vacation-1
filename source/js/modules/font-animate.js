@@ -1,27 +1,31 @@
 export default class FontAnimate {
   constructor(
-      elementSelector,
+      element,
       timer,
       classForActivate,
-      property
+      property,
+      timingFunction
   ) {
     this._TIME_SPACE = 100;
 
-    this._elementSelector = elementSelector;
     this._timer = timer;
     this._classForActivate = classForActivate;
     this._property = property;
-    this._element = document.querySelector(this._elementSelector);
-    this._timeOffset = 0;
+    this._element = element;
+    this._timeOffset = 150;
+    this._timingFunction = timingFunction;
 
     this.prePareText();
   }
 
-  createElement(letter/*, index*/) {
+  createElement(letter, index) {
     const span = document.createElement(`span`);
-/*    span.textContent = letter;
-    span.style.transition = `${this._property} ${this._timer}ms ease ${this._timeOffset}ms`;
-    this._timeOffset += 20;*/
+    const rand = 2 + Math.floor(Math.random() * 3); // min + Math.random() * (max + 1 - min); от 2 до 4
+    if (this._timeOffset === 0)
+      this._timeOffset =  rand * 50
+    span.textContent = letter;
+    span.style.transition = `${this._property} ${this._timer + rand*100}ms ${this._timingFunction} ${this._timeOffset}ms`;
+    this._timeOffset -= 50;
     return span;
   }
 
@@ -29,11 +33,11 @@ export default class FontAnimate {
     if (!this._element) {
       return;
     }
-    const text = this._element.textContent.trim().split(` `).filter((latter)=>latter !== '');
+    const text = this._element.textContent.trim().split(` `).filter((latter)=>latter !== ``);
     const content = text.reduce((fragmentParent, word) => {
 
       const wordElement = Array.from(word).reduce((fragment, latter, index) => {
-        fragment.appendChild(this.createElement(latter/*, index+1*/));
+        fragment.appendChild(this.createElement(latter, index + 1));
         return fragment;
       }, document.createDocumentFragment());
 

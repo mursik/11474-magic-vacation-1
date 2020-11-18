@@ -24,11 +24,13 @@ bodyLoad();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
-const fontAnimateSlogan = new FontAnimate(`.intro__title`, 500, `active`, `transform`);
+
+const fontAnimateSlogan = new FontAnimate(document.querySelector(`.intro__title`), 500, `active`, `transform`, `cubic-bezier(0, 0, 0.32, 0.99)`);
 setTimeout(()=>{
   fontAnimateSlogan.runAnimation();
 }, 500);
-const fontAnimateDate = new FontAnimate(`.intro__date`, 500, `active`, `transform`);
+
+const fontAnimateDate = new FontAnimate(document.querySelector(`.intro__date`), 500, `active`, `transform`, `cubic-bezier(0, 0, 0.32, 0.99)`);
 setTimeout(()=>{
   fontAnimateDate.runAnimation();
-}, 1000);
+}, 1200);
