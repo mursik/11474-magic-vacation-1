@@ -52,14 +52,6 @@
   line-height: 0.906;
   letter-spacing: -0.04em;
 
-  &.active {
-    .text__word {
-      > span {
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-  }
   @media (min-width: $stop-scaling) {
     max-width: 990px;
     font-size: 120px;

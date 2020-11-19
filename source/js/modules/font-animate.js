@@ -1,31 +1,38 @@
 export default class FontAnimate {
   constructor(
       element,
+      flagPrePareText,
       timer,
-      classForActivate,
       property,
       timingFunction
   ) {
-    this._TIME_SPACE = 100;
 
     this._timer = timer;
-    this._classForActivate = classForActivate;
+    this._classForActivate = `active`;
     this._property = property;
     this._element = element;
-    this._timeOffset = 150;
+    this._timeOffset = 0;
+    this._timeOffsetInterval = 50;
     this._timingFunction = timingFunction;
+    this._maxStep = 4;
+    this._minStep = 2;
+    this._flagPrepareText = flagPrePareText;
 
     this.prePareText();
   }
 
-  createElement(letter, index) {
+  createElement(letter, indexWord, indexLetter) {
     const span = document.createElement(`span`);
-    const rand = 2 + Math.floor(Math.random() * 3); // min + Math.random() * (max + 1 - min); от 2 до 4
-    if (this._timeOffset === 0)
-      this._timeOffset =  rand * 50
+    const limit = indexWord * this._maxStep * this._timeOffsetInterval;
+
+    if (this._timeOffset <= limit || (indexWord > 0 && indexLetter === 0)) {
+      const rand = this._minStep + Math.floor(Math.random()*(this._maxStep + 1 - this._minStep));
+      this._timeOffset = rand * this._timeOffsetInterval + limit;
+    }
+
     span.textContent = letter;
-    span.style.transition = `${this._property} ${this._timer + rand*100}ms ${this._timingFunction} ${this._timeOffset}ms`;
-    this._timeOffset -= 50;
+    span.style.transition = `${this._property} ${this._timer}ms ${this._timingFunction} ${this._timeOffset}ms`;
+    this._timeOffset -= this._timeOffsetInterval;
     return span;
   }
 
@@ -33,17 +40,22 @@ export default class FontAnimate {
     if (!this._element) {
       return;
     }
-    const text = this._element.textContent.trim().split(` `).filter((latter)=>latter !== ``);
-    const content = text.reduce((fragmentParent, word) => {
+    let text = this._element.textContent.trim().split(` `).filter((letter)=>letter !== ``);
+    if ( this._flagPrepareText == false) {
+      text = [this._element.textContent.trim()];
+    }
 
-      const wordElement = Array.from(word).reduce((fragment, latter, index) => {
-        fragment.appendChild(this.createElement(latter, index + 1));
+    const content = text.reduce((fragmentParent, word, indexWord) => {
+
+      const wordElement = Array.from(word).reduce((fragment, letter, indexLetter) => {
+        fragment.appendChild(this.createElement(letter, indexWord, indexLetter));
         return fragment;
       }, document.createDocumentFragment());
 
       const wordContainer = document.createElement(`span`);
       wordContainer.classList.add(`text__word`);
       wordContainer.appendChild(wordElement);
+
       fragmentParent.appendChild(wordContainer);
       return fragmentParent;
     }, document.createDocumentFragment());
