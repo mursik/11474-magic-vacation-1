@@ -1,4 +1,5 @@
 export default () => {
+  let flamingo = document.querySelector(`.result__image .flamingo`);
   let showResultEls = document.querySelectorAll(`.js-show-result`);
   let results = document.querySelectorAll(`.screen--result`);
   if (results.length) {
@@ -14,6 +15,13 @@ export default () => {
         });
         targetEl[0].classList.add(`screen--show`);
         targetEl[0].classList.remove(`screen--hidden`);
+        if (target === `result2`) {
+          flamingo.addEventListener(`animationend`, () => {
+            if (!flamingo.classList.contains(`shake`)) {
+              flamingo.classList.add(`shake`);
+            }
+          });
+        }
       });
     }
 

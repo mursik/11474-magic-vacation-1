@@ -26,13 +26,14 @@ export default class FontAnimate {
     const limit = indexWord * this._maxStep * this._timeOffsetInterval;
 
     if (this._timeOffset <= limit || (indexWord > 0 && indexLetter === 0)) {
-      const rand = this._minStep + Math.floor(Math.random()*(this._maxStep + 1 - this._minStep));
+      const rand = this._minStep + Math.floor(Math.random() * (this._maxStep + 1 - this._minStep));
       this._timeOffset = rand * this._timeOffsetInterval + limit;
     }
 
     span.textContent = letter;
     span.style.transition = `${this._property} ${this._timer}ms ${this._timingFunction} ${this._timeOffset}ms`;
     this._timeOffset -= this._timeOffsetInterval;
+
     return span;
   }
 
@@ -40,11 +41,10 @@ export default class FontAnimate {
     if (!this._element) {
       return;
     }
-    let text = this._element.textContent.trim().split(` `).filter((letter)=>letter !== ``);
-    if ( this._flagPrepareText == false) {
+    let text = this._element.textContent.trim().split(` `).filter((letter) => letter !== ``);
+    if (this._flagPrepareText === false) {
       text = [this._element.textContent.trim()];
     }
-
     const content = text.reduce((fragmentParent, word, indexWord) => {
 
       const wordElement = Array.from(word).reduce((fragment, letter, indexLetter) => {
@@ -55,6 +55,7 @@ export default class FontAnimate {
       const wordContainer = document.createElement(`span`);
       wordContainer.classList.add(`text__word`);
       wordContainer.appendChild(wordElement);
+      wordContainer.appendChild(document.createTextNode(` `)); // fix bag when switching between pages
 
       fragmentParent.appendChild(wordContainer);
       return fragmentParent;

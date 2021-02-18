@@ -17,7 +17,7 @@ export default class FullPageScroll {
   }
 
   init() {
-    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, { trailing: true }));
+    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
@@ -77,21 +77,22 @@ export default class FullPageScroll {
     });
 
     let title = this.screenElements[this.activeScreen].getElementsByTagName(`h1`);
-    if (title.length == 0)
+    if (title.length === 0) {
       title = this.screenElements[this.activeScreen].getElementsByTagName(`h2`);
+    }
 
     let fontAnimateTitle;
-    for (var i=0; i<title.length; i++) {
-      fontAnimateTitle = new FontAnimate(title[i], false, 500, `transform`, `cubic-bezier(0, 0, 0.32, 0.99)`);
+    for (let i = 0; i < title.length; i++) {
+      fontAnimateTitle = new FontAnimate(title[i], true, 500, `transform`, `cubic-bezier(0, 0, 0.32, 0.99)`);
       setTimeout(() => {
         fontAnimateTitle.runAnimation();
-      }, 200);
+      }, 500);
     }
 
     const fontAnimateDate = new FontAnimate(this.screenElements[this.activeScreen].querySelector(`.intro__date`), false, 300, `transform`, `cubic-bezier(0, 0, 0.32, 0.99)`);
     setTimeout(()=>{
       fontAnimateDate.runAnimation();
-    }, 800);
+    }, 1200);
   }
 
   emitChangeDisplayEvent() {

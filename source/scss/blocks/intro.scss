@@ -5,6 +5,14 @@
          -moz-animation: fadeInTop 1s;
            -o-animation: fadeInTop 1s;
               animation: fadeInTop 1s;
+        -webkit-animation-delay: 0.8s;
+           -moz-animation-delay: 0.8s;
+             -o-animation-delay: 0.8s;
+                animation-delay: 0.8s;
+        -webkit-animation-fill-mode: forwards;
+           -moz-animation-fill-mode: forwards;
+             -o-animation-fill-mode: forwards;
+                animation-fill-mode: forwards;
     }
   }
 }
@@ -112,6 +120,7 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     width: 509px;

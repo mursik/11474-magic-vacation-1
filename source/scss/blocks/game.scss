@@ -116,7 +116,9 @@
   opacity: 0.5;
   display: none;
 }
-
+.active .game__buttons{
+  display: block;
+}
 .game__button {
   margin: 0 30px 30px;
   display: block;
