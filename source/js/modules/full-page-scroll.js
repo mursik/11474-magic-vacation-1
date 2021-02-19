@@ -1,5 +1,6 @@
 import throttle from 'lodash/throttle';
 import rules from './rules.js';
+import FontAnimate from './font-animate.js';
 
 export default class FullPageScroll {
   constructor() {
@@ -56,6 +57,8 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     this.screenElements[this.activeScreen].classList.add(`active`);
     this.screenBg.classList.remove(`active`);
+
+    this.animateBlocksScreen();
     rules();
   }
 
@@ -65,6 +68,31 @@ export default class FullPageScroll {
       this.menuElements.forEach((item) => item.classList.remove(`active`));
       activeItem.classList.add(`active`);
     }
+  }
+
+  animateBlocksScreen() {
+
+    this.screenElements[this.previewScreen].querySelectorAll(`.active`).forEach((element) => {
+      element.classList.remove(`active`);
+    });
+
+    let title = this.screenElements[this.activeScreen].getElementsByTagName(`h1`);
+    if (title.length === 0) {
+      title = this.screenElements[this.activeScreen].getElementsByTagName(`h2`);
+    }
+
+    let fontAnimateTitle;
+    for (let i = 0; i < title.length; i++) {
+      fontAnimateTitle = new FontAnimate(title[i], true, 500, `transform`, `cubic-bezier(0, 0, 0.32, 0.99)`);
+      setTimeout(() => {
+        fontAnimateTitle.runAnimation();
+      }, 500);
+    }
+
+    const fontAnimateDate = new FontAnimate(this.screenElements[this.activeScreen].querySelector(`.intro__date`), false, 300, `transform`, `cubic-bezier(0, 0, 0.32, 0.99)`);
+    setTimeout(()=>{
+      fontAnimateDate.runAnimation();
+    }, 1200);
   }
 
   emitChangeDisplayEvent() {

@@ -54,6 +54,119 @@
   }
 }
 
+#result2 {
+  .result__image {
+    picture {
+      display: contents;
+    }
+
+    img {
+      height: auto;
+      position: absolute;
+    }
+  }
+
+  .leaf_blue_1 {
+    width: 17em;
+    opacity: 0;
+
+    @media (min-width: $laptop) {
+      width: 15em;
+    }
+  }
+
+  .leaf_blue_2 {
+    width: 17em;
+    transform: translate3d(-9em, 8em, 0) rotate(-15deg);
+    opacity: 0;
+
+    @media (min-width: $laptop) {
+      width: 15em;
+    }
+  }
+
+  .leaf_green {
+    width: 16em;
+    opacity: 0;
+
+    @media (min-width: $laptop) {
+      width: 14em;
+    }
+  }
+
+  .suitcase {
+    width: 21.4em;
+    @media (min-width: $laptop) {
+      width: 19.4em;
+    }
+  }
+
+  .flamingo {
+    width: 13.9em;
+    opacity: 0;
+
+    @media (min-width: $laptop) {
+      width: 11.9em;
+    }
+  }
+
+}
+
+#result2.screen--show {
+  .suitcase {
+    animation-name: suitcase;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.88, 0.09, 1, 1);
+    animation-fill-mode: both;
+    transform-origin: center bottom;
+    animation-direction: normal;
+  }
+  .flamingo {
+    animation-name: flamingo;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.88, 0.09, 1, 1);
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+
+    &.shake {
+      opacity: 1;
+      animation-name: shake;
+      animation-duration: 2s;
+      animation-timing-function: cubic-bezier(.17,.67,.62,1);
+      animation-iteration-count:infinite;
+      animation-direction: alternate;
+
+    }
+  }
+  .leaf_blue_1 {
+    animation-name: leaf_blue_1;
+    animation-duration: 2.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    transform-origin: left bottom;
+    animation-direction: normal;
+    animation-delay: 0.8s;
+  }
+  .leaf_blue_2 {
+    animation-name: leaf_blue_2;
+    animation-duration: 2.6s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    transform-origin: right bottom;
+    animation-direction: normal;
+    animation-delay: 0.8s;
+  }
+  .leaf_green {
+    animation-name: leaf_green;
+    animation-duration: 2.3s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    transform-origin: left bottom;
+    animation-direction: normal;
+    animation-delay: 1s;
+  }
+}
+
 .result__title {
   margin: 0 auto 2rem;
   color: $c-light;
