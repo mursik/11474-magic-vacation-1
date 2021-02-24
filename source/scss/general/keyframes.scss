@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 @keyframes fadeInTop {
   from {
     opacity: 0;
@@ -231,6 +240,26 @@
     opacity: 1;
     transform: translate3d(8.5em, 8em, 0) rotate(-10deg);
 
+  }
+}
+@keyframes roll_forward {
+  0%{
+     transform:rotate(-360deg);
+  }
+  100%{
+     transform:rotate(0);
+     right: 0;
+     opacity: 1;
+  }
+}
+@keyframes roll_back {
+  0%{
+     transform:rotate(360deg);
+  }
+  100%{
+     transform:rotate(0);
+     left: 0;
+     opacity: 1;
   }
 }
 

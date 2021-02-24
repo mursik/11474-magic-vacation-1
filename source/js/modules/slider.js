@@ -1,4 +1,5 @@
 import Swiper from "swiper";
+import headerColorChange from './header-color-change.js';
 
 export default () => {
   let storySlider;
@@ -17,6 +18,7 @@ export default () => {
         },
         on: {
           slideChange: () => {
+            headerColorChange(storySlider.activeIndex);
             if (storySlider.activeIndex === 0 || storySlider.activeIndex === 1) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
             } else if (storySlider.activeIndex === 2 || storySlider.activeIndex === 3) {
@@ -32,7 +34,7 @@ export default () => {
           }
         },
         observer: true,
-        observeParents: true
+        observeParents: true,
       });
     } else {
       storySlider = new Swiper(`.js-slider`, {
@@ -51,6 +53,7 @@ export default () => {
         },
         on: {
           slideChange: () => {
+            headerColorChange(storySlider.activeIndex);
             if (storySlider.activeIndex === 0) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg")`;
             } else if (storySlider.activeIndex === 2) {
@@ -66,7 +69,7 @@ export default () => {
           }
         },
         observer: true,
-        observeParents: true
+        observeParents: true,
       });
     }
   };

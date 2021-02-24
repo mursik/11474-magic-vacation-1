@@ -31,13 +31,15 @@
        -o-transition: all 0.7s cubic-bezier(.32,.98,.66,.97);
           transition: all 0.7s cubic-bezier(.32,.98,.66,.97);
 }
-.loaded {
-  .animationx-rl, .animationx-lr, .animationy-bt {
-    opacity: 1;
-    -webkit-transform: translate(0);
-       -moz-transform: translate(0);
-        -ms-transform: translate(0);
-         -o-transform: translate(0);
-            transform: translate(0);
+@media (mim-width: $tablet) {
+  .loaded {
+    .animationx-rl, .animationx-lr, .animationy-bt {
+      opacity: 1;
+      -webkit-transform: translate(0);
+         -moz-transform: translate(0);
+          -ms-transform: translate(0);
+           -o-transform: translate(0);
+              transform: translate(0);
+    }
   }
 }

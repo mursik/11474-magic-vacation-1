@@ -1,6 +1,7 @@
 import throttle from 'lodash/throttle';
 import rules from './rules.js';
 import FontAnimate from './font-animate.js';
+import headerColorChange from './header-color-change.js';
 
 export default class FullPageScroll {
   constructor() {
@@ -60,6 +61,7 @@ export default class FullPageScroll {
 
     this.animateBlocksScreen();
     rules();
+    headerColorChange(-1);
   }
 
   changeActiveMenuItem() {

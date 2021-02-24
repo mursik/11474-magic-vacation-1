@@ -22,6 +22,7 @@
     text-transform: uppercase;
     font-size: 1.2rem;
     line-height: 1.2;
+    opacity: 0;
 
     @media (min-width: $stop-scaling) {
       font-size: 12px;
@@ -87,6 +88,18 @@
 
     @media (max-width: $mobile) and (orientation: landscape) {
       padding: 0.9rem 0;
+    }
+  }
+}
+
+section {
+  &.active {
+    .disclaimer {
+      ul {
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+      }
     }
   }
 }
