@@ -31,7 +31,7 @@
        -o-transition: all 0.7s cubic-bezier(.32,.98,.66,.97);
           transition: all 0.7s cubic-bezier(.32,.98,.66,.97);
 }
-@media (mim-width: $tablet) {
+@media (min-width: $tablet) {
   .loaded {
     .animationx-rl, .animationx-lr, .animationy-bt {
       opacity: 1;
